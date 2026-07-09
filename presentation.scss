@@ -1,0 +1,21 @@
+/*-- scss:defaults --*/
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,600;1,500&family=Inter:wght@300;400;500&display=swap');
+
+$body-bg: #f4efe6;
+$body-color: #1c2529;
+$link-color: #c07a43;
+
+$presentation-heading-font: "Fraunces", Georgia, serif;
+$presentation-heading-color: #0d3b45;
+$presentation-font-size-root: 30px;
+$font-family-sans-serif: "Inter", sans-serif;
+
+/*-- scss:rules --*/
+.reveal h1, .reveal h2 { font-weight: 600; letter-spacing: -0.01em; }
+.reveal blockquote {
+  border-left: 4px solid #c07a43;
+  background: rgba(13,59,69,0.04);
+  font-style: italic;
+}
+.reveal .footer { color: #6b7671; font-size: 0.5em; }
+.reveal .center h1, .reveal .center h2 { text-align: center; }

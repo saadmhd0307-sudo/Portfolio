@@ -1,0 +1,131 @@
+---
+title: "From Sourcing to Scale"
+subtitle: "Building data-driven ventures across the US and UAE"
+author: "Saad Al Awadhi"
+format:
+  revealjs:
+    theme: [default, presentation.scss]
+    slide-number: true
+    transition: fade
+    incremental: false
+    center-title-slide: true
+    footer: "Saad Al Awadhi · Cal Poly Pomona"
+execute:
+  echo: false
+  warning: false
+---
+
+## Hi, I'm Saad {.center}
+
+Entrepreneur · Business Development · Product Sourcing
+
+Founder of **S&N Supplies** · Co-founder of **Impact Lights**
+
+BBA Marketing Management — Cal Poly Pomona
+
+---
+
+## The thesis
+
+> Great sourcing is a research problem before it's a logistics problem.
+
+I win on **market analysis**, **supplier negotiation**, and **measuring what works** — then I make it repeatable.
+
+---
+
+## What I do
+
+::: {.columns}
+::: {.column width="50%"}
+**Operate**
+
+- Cross-border wholesale
+- Amazon FBA supply
+- E-commerce D2C
+:::
+::: {.column width="50%"}
+**Analyze**
+
+- Market & product research
+- Margin & funnel metrics
+- Marketing automation
+:::
+:::
+
+---
+
+## S&N Supplies at a glance
+
+```{r}
+#| echo: false
+#| fig-width: 8
+#| fig-height: 3.6
+library(ggplot2)
+df <- data.frame(
+  cat = factor(c("Health/Beauty","Kitchen","Grocery","Electronics","Closeout"),
+               levels = c("Health/Beauty","Kitchen","Grocery","Electronics","Closeout")),
+  share = c(28,20,18,16,18)
+)
+ggplot(df, aes(cat, share, fill = cat)) +
+  geom_col(width = 0.7) +
+  scale_fill_manual(values = c("#0d3b45","#1a5560","#c07a43","#d59a6b","#6b7671")) +
+  scale_y_continuous(expand = c(0, 0)) +
+  labs(x = NULL, y = "Sourcing share (%)") +
+  theme_minimal(base_size = 13) +
+  theme(
+    legend.position = "none",
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.background = element_rect(fill = NA, color = NA),
+    panel.background = element_rect(fill = NA, color = NA)
+  )
+```
+
+---
+
+## Automating growth
+
+I designed a lead-gen pipeline that turns manual prospecting into a system:
+
+**Apollo.io** → **Make.com** → **AI drafting** → **Outreach**
+
+More time for the work that actually needs a human: negotiation and partnerships.
+
+---
+
+## The numbers I care about
+
+::: {.columns}
+::: {.column width="33%"}
+### Margin
+Every category earns its shelf space.
+:::
+::: {.column width="33%"}
+### Repeat rate
+Retention beats acquisition cost.
+:::
+::: {.column width="33%"}
+### Throughput
+Pipeline volume, week over week.
+:::
+:::
+
+---
+
+## Beyond business
+
+- UAE National Service — **distinction, 12/12**
+- First-place **equestrian** finishes in Dubai
+- Motorsport & track driving at Willow Springs
+
+Discipline and performance under pressure — on and off the track.
+
+---
+
+## Let's talk {.center}
+
+**Saad Al Awadhi**
+
+[sn-supplies.com](https://sn-supplies.com) · you@sn-supplies.com
+
+Thank you.

@@ -1,0 +1,44 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Saad Al Awadhi"
+  description: "Entrepreneur and business development professional specializing in cross-border sourcing, e-commerce, and data-driven growth across the US and UAE."
+  site-url: https://github.com/saadmhd0307-sudo
+  favicon: images/profile.png
+  open-graph: true
+  twitter-card: true
+  google-analytics: "G-XXXXXXXXXX"   # <-- replace with your real Measurement ID
+  navbar:
+    logo: ""
+    title: "SAAD AL AWADHI"
+    left:
+      - href: index.qmd
+        text: HOME
+      - href: projects.qmd
+        text: PROJECTS
+      - href: dashboard.qmd
+        text: DASHBOARD
+      - href: presentation.qmd
+        text: PRESENTATION
+    right:
+      - icon: linkedin
+        href: https://www.linkedin.com/in/saad-najem-664222419/
+        aria-label: LinkedIn
+      - icon: envelope
+        href: mailto:you@sn-supplies.com
+        aria-label: Email
+      - icon: globe
+        href: https://sn-supplies.com
+        aria-label: Website
+
+format:
+  html:
+    theme:
+      - cosmo
+      - styles.scss
+    toc: false
+    page-layout: full
+    grid:
+      body-width: 1100px

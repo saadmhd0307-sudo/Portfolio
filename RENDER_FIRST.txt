@@ -1,0 +1,9 @@
+This project uses R (ggplot2) for all charts.
+
+Before publishing, render it once in RStudio to generate the /docs folder:
+
+  1. Install the package (one time):  install.packages("ggplot2")
+  2. In the RStudio Terminal, from this folder:  quarto render
+
+That creates /docs, which GitHub Pages serves.
+To preview locally first:  quarto preview

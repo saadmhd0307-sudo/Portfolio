@@ -1,0 +1,163 @@
+---
+title: "Projects"
+pagetitle: "Projects — Saad Al Awadhi"
+description: "Case studies in cross-border sourcing, e-commerce growth, and marketing automation."
+format:
+  html:
+    page-layout: full
+    code-fold: true
+    toc: true
+    toc-location: right
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+[Case studies]{.section-eyebrow}
+
+## Data-driven ventures
+
+A look at the businesses I've built and the decisions behind them — framed the way I approach every opportunity: research first, negotiate hard, measure everything.
+
+---
+
+::: {.project-card}
+### S&N Supplies — Cross-Border Wholesale Distribution
+
+[Business Development]{.tag} [Sourcing]{.tag} [Supply Chain]{.tag} [Market Analysis]{.tag}
+
+**Role:** Founder & Wholesale Operations Lead · Jan 2023 – Present · Costa Mesa, CA & Dubai, UAE
+
+**Challenge.** Amazon FBA sellers and retail buyers struggle to find reliable, competitively priced inventory in high-demand categories. Overstock and closeout opportunities are profitable but require constant market research to spot.
+
+**What I did.** Built a global supplier network across domestic and international vendors, negotiated pricing, and coordinated procurement for name-brand health & beauty, kitchen appliances, grocery, consumer electronics, and closeout merchandise. I run continuous market and product analysis to identify high-demand categories and margin opportunities.
+
+**Result.** A repeatable sourcing operation serving Amazon sellers, online entrepreneurs, and wholesale clients across two markets, with long-term partnerships built on dependable fulfillment and competitive pricing.
+:::
+
+The category mix below reflects how I balance the portfolio between stable, repeat-demand goods and higher-margin opportunistic buys.
+
+```{r}
+#| label: fig-category-mix
+#| fig-cap: "Illustrative S&N Supplies sourcing mix by category"
+#| fig-width: 8
+#| fig-height: 4.2
+library(ggplot2)
+
+df <- data.frame(
+  category = factor(
+    c("Health &\nBeauty", "Kitchen\nAppliances", "Grocery", "Consumer\nElectronics", "Closeout /\nOverstock"),
+    levels = c("Health &\nBeauty", "Kitchen\nAppliances", "Grocery", "Consumer\nElectronics", "Closeout /\nOverstock")
+  ),
+  share = c(28, 20, 18, 16, 18)
+)
+cols <- c("#0d3b45", "#1a5560", "#c07a43", "#d59a6b", "#6b7671")
+
+ggplot(df, aes(category, share, fill = category)) +
+  geom_col(width = 0.7) +
+  geom_text(aes(label = paste0(share, "%")), vjust = -0.5, size = 3.4, color = "#1c2529") +
+  scale_fill_manual(values = cols) +
+  scale_y_continuous(limits = c(0, 35), expand = c(0, 0)) +
+  labs(x = NULL, y = "Share of sourcing (%)") +
+  theme_minimal(base_size = 12) +
+  theme(
+    legend.position = "none",
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.background = element_rect(fill = NA, color = NA),
+    panel.background = element_rect(fill = NA, color = NA)
+  )
+```
+
+---
+
+::: {.project-card}
+### Impact Lights — E-commerce Growth
+
+[E-commerce]{.tag} [Digital Marketing]{.tag} [Customer Experience]{.tag}
+
+**Role:** Co-Founder · Mar 2021 – Present · Dubai, UAE
+
+**Challenge.** Launch and grow a direct-to-consumer online retail brand from scratch in a competitive category.
+
+**What I did.** Led product sourcing, digital marketing, customer experience, and daily operations. Executed data-driven campaigns across digital channels, analyzed customer feedback and sales performance to refine offerings, and managed end-to-end customer service to drive repeat business.
+
+**Result.** Sustained sales growth and improved operational efficiency by continuously adapting strategy to performance insights and consumer demand.
+:::
+
+Tracking channel performance let me shift spend toward what actually converted rather than what looked busy.
+
+```{r}
+#| label: fig-funnel
+#| fig-cap: "Illustrative customer acquisition funnel — Impact Lights"
+#| fig-width: 8
+#| fig-height: 4
+library(ggplot2)
+
+df <- data.frame(
+  stage = factor(c("Reach", "Site Visits", "Add to Cart", "Purchase", "Repeat Buyer"),
+                 levels = rev(c("Reach", "Site Visits", "Add to Cart", "Purchase", "Repeat Buyer"))),
+  value = c(100, 42, 18, 9, 4)
+)
+cols <- c("#0d3b45", "#1a5560", "#2a7080", "#c07a43", "#d59a6b")
+
+ggplot(df, aes(value, stage, fill = stage)) +
+  geom_col(width = 0.7) +
+  geom_text(aes(label = value), hjust = -0.3, size = 3.4, color = "#1c2529") +
+  scale_fill_manual(values = rev(cols)) +
+  scale_x_continuous(limits = c(0, 110), expand = c(0, 0)) +
+  labs(x = "Relative index (Reach = 100)", y = NULL) +
+  theme_minimal(base_size = 12) +
+  theme(
+    legend.position = "none",
+    panel.grid.major.y = element_blank(),
+    panel.grid.minor = element_blank(),
+    plot.background = element_rect(fill = NA, color = NA),
+    panel.background = element_rect(fill = NA, color = NA)
+  )
+```
+
+---
+
+::: {.project-card}
+### Automated Lead-Generation System
+
+[Marketing Automation]{.tag} [Growth Ops]{.tag} [AI Tooling]{.tag}
+
+**Role:** Designed & implemented for S&N Supplies
+
+**Challenge.** Manual prospecting didn't scale with the pace of the wholesale business.
+
+**What I did.** Designed an automated outreach pipeline using **Apollo.io** for prospect data, **Make.com** for workflow orchestration, and **AI** for message drafting and qualification — turning a manual process into a repeatable, scalable system.
+
+**Result.** Streamlined prospecting that frees time for high-value negotiation and partnership work.
+:::
+
+```{r}
+#| label: fig-automation
+#| fig-cap: "Lead-generation pipeline stages"
+#| fig-width: 8.5
+#| fig-height: 2.6
+library(ggplot2)
+
+steps <- c("Source\n(Apollo.io)", "Enrich &\nFilter", "Orchestrate\n(Make.com)", "Draft\n(AI)", "Outreach &\nReply")
+df <- data.frame(x = seq_along(steps), y = 0, num = seq_along(steps), label = steps)
+arrows <- data.frame(x = head(df$x, -1) + 0.25, xend = head(df$x, -1) + 0.75, y = 0, yend = 0)
+
+ggplot() +
+  geom_segment(data = arrows, aes(x = x, xend = xend, y = y, yend = yend),
+               arrow = arrow(length = unit(0.18, "cm"), type = "closed"),
+               color = "#c07a43", linewidth = 0.9) +
+  geom_point(data = df, aes(x, y), size = 16, color = "#0d3b45") +
+  geom_text(data = df, aes(x, y, label = num), color = "white", size = 4.2) +
+  geom_text(data = df, aes(x, y - 0.22, label = label), size = 3, color = "#1c2529", vjust = 1) +
+  scale_x_continuous(limits = c(0.5, length(steps) + 0.5)) +
+  scale_y_continuous(limits = c(-0.6, 0.4)) +
+  theme_void() +
+  theme(plot.background = element_rect(fill = NA, color = NA))
+```
+
+---
+
+*Charts above are illustrative and use representative figures to demonstrate the analytical approach behind each venture.*

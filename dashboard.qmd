@@ -1,0 +1,151 @@
+---
+title: "Business Dashboard"
+pagetitle: "Dashboard — Saad Al Awadhi"
+format:
+  dashboard:
+    theme:
+      - cosmo
+      - styles.scss
+    orientation: rows
+    nav-buttons:
+      - icon: house
+        href: index.html
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r}
+#| label: setup
+library(ggplot2)
+
+PETROL <- "#0d3b45"; COPPER <- "#c07a43"; STEEL <- "#2a7080"; MUTED <- "#6b7671"
+
+theme_dash <- function(base_size = 12) {
+  theme_minimal(base_size = base_size) +
+    theme(
+      legend.position = "none",
+      panel.grid.minor = element_blank(),
+      plot.background = element_rect(fill = NA, color = NA),
+      panel.background = element_rect(fill = NA, color = NA)
+    )
+}
+```
+
+## Row {height=25%}
+
+::: {.valuebox icon="shop" color="#0d3b45"}
+Ventures founded
+
+**2**
+:::
+
+::: {.valuebox icon="globe" color="#2a7080"}
+Markets
+
+**2**
+:::
+
+::: {.valuebox icon="people" color="#c07a43"}
+Clients
+
+**100+**
+:::
+
+::: {.valuebox icon="graph-up-arrow" color="#1a5560"}
+Languages
+
+**2**
+:::
+
+## Row {height=38%}
+
+### Column {width=55%}
+
+#### Monthly sourcing volume (illustrative index)
+
+```{r}
+#| fig-width: 7
+#| fig-height: 3.6
+df <- data.frame(
+  month = factor(month.abb, levels = month.abb),
+  vol = c(42,48,55,53,61,66,72,70,78,85,92,98)
+)
+ggplot(df, aes(as.integer(month), vol)) +
+  geom_area(fill = PETROL, alpha = 0.10) +
+  geom_line(color = PETROL, linewidth = 1) +
+  geom_point(color = PETROL, size = 2) +
+  scale_x_continuous(breaks = 1:12, labels = month.abb) +
+  labs(x = NULL, y = "Volume index") +
+  theme_dash() +
+  theme(panel.grid.major.x = element_blank())
+```
+
+### Column {width=45%}
+
+#### Category margin profile
+
+```{r}
+#| fig-width: 5.6
+#| fig-height: 3.6
+df <- data.frame(
+  cat = factor(c("Health/Beauty","Kitchen","Grocery","Electronics","Closeout"),
+               levels = rev(c("Health/Beauty","Kitchen","Grocery","Electronics","Closeout"))),
+  margin = c(22,18,12,15,28)
+)
+cols <- rev(c(PETROL, STEEL, MUTED, STEEL, COPPER))
+ggplot(df, aes(margin, cat, fill = cat)) +
+  geom_col(width = 0.7) +
+  geom_text(aes(label = paste0(margin, "%")), hjust = -0.3, size = 3, color = "#1c2529") +
+  scale_fill_manual(values = cols) +
+  scale_x_continuous(limits = c(0, 32), expand = c(0, 0)) +
+  labs(x = "Avg. gross margin (%)", y = NULL) +
+  theme_dash() +
+  theme(panel.grid.major.y = element_blank())
+```
+
+## Row {height=37%}
+
+### Column {width=50%}
+
+#### Customer acquisition funnel
+
+```{r}
+#| fig-width: 6
+#| fig-height: 3.4
+df <- data.frame(
+  stage = factor(c("Reach","Visits","Cart","Purchase","Repeat"),
+                 levels = rev(c("Reach","Visits","Cart","Purchase","Repeat"))),
+  value = c(100,42,18,9,4)
+)
+cols <- rev(c(PETROL, STEEL, STEEL, COPPER, "#d59a6b"))
+ggplot(df, aes(value, stage, fill = stage)) +
+  geom_col(width = 0.7) +
+  geom_text(aes(label = value), hjust = -0.3, size = 3, color = "#1c2529") +
+  scale_fill_manual(values = cols) +
+  scale_x_continuous(limits = c(0, 110), expand = c(0, 0)) +
+  labs(x = "Index (Reach = 100)", y = NULL) +
+  theme_dash() +
+  theme(panel.grid.major.y = element_blank())
+```
+
+### Column {width=50%}
+
+#### Lead-gen pipeline throughput
+
+```{r}
+#| fig-width: 6
+#| fig-height: 3.4
+df <- data.frame(week = 1:8, leads = c(120,145,160,180,175,205,230,255))
+ggplot(df, aes(week, leads)) +
+  geom_col(fill = PETROL, width = 0.7) +
+  scale_x_continuous(breaks = 1:8) +
+  labs(x = "Week", y = "Qualified leads") +
+  theme_dash() +
+  theme(panel.grid.major.x = element_blank())
+```
+
+::: {.card}
+Figures on this dashboard are illustrative and demonstrate the reporting approach used to manage S&N Supplies and Impact Lights.
+:::
