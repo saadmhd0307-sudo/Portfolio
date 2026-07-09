@@ -9,6 +9,7 @@ format:
     transition: fade
     incremental: false
     center-title-slide: true
+    embed-resources: true
     footer: "Saad Al Awadhi · Cal Poly Pomona"
 execute:
   echo: false
