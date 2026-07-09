@@ -1,0 +1,114 @@
+[
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "Case studies"
+  },
+  {
+    "objectID": "projects.html#data-driven-ventures",
+    "href": "projects.html#data-driven-ventures",
+    "title": "Projects",
+    "section": "Data-driven ventures",
+    "text": "Data-driven ventures\nA look at the businesses I’ve built and the decisions behind them — framed the way I approach every opportunity: research first, negotiate hard, measure everything.\n\n\nS&N Supplies — Cross-Border Wholesale Distribution\nBusiness Development Sourcing Supply Chain Market Analysis\nRole: Founder & Wholesale Operations Lead · Jan 2023 – Present · Costa Mesa, CA & Dubai, UAE\nChallenge. Amazon FBA sellers and retail buyers struggle to find reliable, competitively priced inventory in high-demand categories. Overstock and closeout opportunities are profitable but require constant market research to spot.\nWhat I did. Built a global supplier network across domestic and international vendors, negotiated pricing, and coordinated procurement for name-brand health & beauty, kitchen appliances, grocery, consumer electronics, and closeout merchandise. I run continuous market and product analysis to identify high-demand categories and margin opportunities.\nResult. A repeatable sourcing operation serving Amazon sellers, online entrepreneurs, and wholesale clients across two markets, with long-term partnerships built on dependable fulfillment and competitive pricing.\n\nThe category mix below reflects how I balance the portfolio between stable, repeat-demand goods and higher-margin opportunistic buys.\n\n\nCode\nlibrary(ggplot2)\n\ndf &lt;- data.frame(\n  category = factor(\n    c(\"Health &\\nBeauty\", \"Kitchen\\nAppliances\", \"Grocery\", \"Consumer\\nElectronics\", \"Closeout /\\nOverstock\"),\n    levels = c(\"Health &\\nBeauty\", \"Kitchen\\nAppliances\", \"Grocery\", \"Consumer\\nElectronics\", \"Closeout /\\nOverstock\")\n  ),\n  share = c(28, 20, 18, 16, 18)\n)\ncols &lt;- c(\"#0d3b45\", \"#1a5560\", \"#c07a43\", \"#d59a6b\", \"#6b7671\")\n\nggplot(df, aes(category, share, fill = category)) +\n  geom_col(width = 0.7) +\n  geom_text(aes(label = paste0(share, \"%\")), vjust = -0.5, size = 3.4, color = \"#1c2529\") +\n  scale_fill_manual(values = cols) +\n  scale_y_continuous(limits = c(0, 35), expand = c(0, 0)) +\n  labs(x = NULL, y = \"Share of sourcing (%)\") +\n  theme_minimal(base_size = 12) +\n  theme(\n    legend.position = \"none\",\n    panel.grid.major.x = element_blank(),\n    panel.grid.minor = element_blank(),\n    plot.background = element_rect(fill = NA, color = NA),\n    panel.background = element_rect(fill = NA, color = NA)\n  )\n\n\n\n\n\n\n\n\nFigure 1: Illustrative S&N Supplies sourcing mix by category\n\n\n\n\n\n\n\nImpact Lights — E-commerce Growth\nE-commerce Digital Marketing Customer Experience\nRole: Co-Founder · Mar 2021 – Present · Dubai, UAE\nChallenge. Launch and grow a direct-to-consumer online retail brand from scratch in a competitive category.\nWhat I did. Led product sourcing, digital marketing, customer experience, and daily operations. Executed data-driven campaigns across digital channels, analyzed customer feedback and sales performance to refine offerings, and managed end-to-end customer service to drive repeat business.\nResult. Sustained sales growth and improved operational efficiency by continuously adapting strategy to performance insights and consumer demand.\n\nTracking channel performance let me shift spend toward what actually converted rather than what looked busy.\n\n\nCode\nlibrary(ggplot2)\n\ndf &lt;- data.frame(\n  stage = factor(c(\"Reach\", \"Site Visits\", \"Add to Cart\", \"Purchase\", \"Repeat Buyer\"),\n                 levels = rev(c(\"Reach\", \"Site Visits\", \"Add to Cart\", \"Purchase\", \"Repeat Buyer\"))),\n  value = c(100, 42, 18, 9, 4)\n)\ncols &lt;- c(\"#0d3b45\", \"#1a5560\", \"#2a7080\", \"#c07a43\", \"#d59a6b\")\n\nggplot(df, aes(value, stage, fill = stage)) +\n  geom_col(width = 0.7) +\n  geom_text(aes(label = value), hjust = -0.3, size = 3.4, color = \"#1c2529\") +\n  scale_fill_manual(values = rev(cols)) +\n  scale_x_continuous(limits = c(0, 110), expand = c(0, 0)) +\n  labs(x = \"Relative index (Reach = 100)\", y = NULL) +\n  theme_minimal(base_size = 12) +\n  theme(\n    legend.position = \"none\",\n    panel.grid.major.y = element_blank(),\n    panel.grid.minor = element_blank(),\n    plot.background = element_rect(fill = NA, color = NA),\n    panel.background = element_rect(fill = NA, color = NA)\n  )\n\n\n\n\n\n\n\n\nFigure 2: Illustrative customer acquisition funnel — Impact Lights\n\n\n\n\n\n\n\nAutomated Lead-Generation System\nMarketing Automation Growth Ops AI Tooling\nRole: Designed & implemented for S&N Supplies\nChallenge. Manual prospecting didn’t scale with the pace of the wholesale business.\nWhat I did. Designed an automated outreach pipeline using Apollo.io for prospect data, Make.com for workflow orchestration, and AI for message drafting and qualification — turning a manual process into a repeatable, scalable system.\nResult. Streamlined prospecting that frees time for high-value negotiation and partnership work.\n\n\n\nCode\nlibrary(ggplot2)\n\nsteps &lt;- c(\"Source\\n(Apollo.io)\", \"Enrich &\\nFilter\", \"Orchestrate\\n(Make.com)\", \"Draft\\n(AI)\", \"Outreach &\\nReply\")\ndf &lt;- data.frame(x = seq_along(steps), y = 0, num = seq_along(steps), label = steps)\narrows &lt;- data.frame(x = head(df$x, -1) + 0.25, xend = head(df$x, -1) + 0.75, y = 0, yend = 0)\n\nggplot() +\n  geom_segment(data = arrows, aes(x = x, xend = xend, y = y, yend = yend),\n               arrow = arrow(length = unit(0.18, \"cm\"), type = \"closed\"),\n               color = \"#c07a43\", linewidth = 0.9) +\n  geom_point(data = df, aes(x, y), size = 16, color = \"#0d3b45\") +\n  geom_text(data = df, aes(x, y, label = num), color = \"white\", size = 4.2) +\n  geom_text(data = df, aes(x, y - 0.22, label = label), size = 3, color = \"#1c2529\", vjust = 1) +\n  scale_x_continuous(limits = c(0.5, length(steps) + 0.5)) +\n  scale_y_continuous(limits = c(-0.6, 0.4)) +\n  theme_void() +\n  theme(plot.background = element_rect(fill = NA, color = NA))\n\n\n\n\n\n\n\n\nFigure 3: Lead-generation pipeline stages\n\n\n\n\n\n\nCharts above are illustrative and use representative figures to demonstrate the analytical approach behind each venture."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Saad Al Awadhi.",
+    "section": "",
+    "text": "Entrepreneur · Business Development · Cal Poly Pomona\n\n\n\nFounder and operator building cross-border sourcing and e-commerce ventures across the United States and the UAE. I turn market research and supplier relationships into scalable, margin-driven growth.\n\nView my work Résumé\n\n\n2+ Ventures founded\n\n\n2 Countries operated\n\n\n100+ Wholesale clients served\n\n\n2 Languages\nAbout"
+  },
+  {
+    "objectID": "index.html#building-value-across-global-markets",
+    "href": "index.html#building-value-across-global-markets",
+    "title": "Saad Al Awadhi.",
+    "section": "Building value across global markets",
+    "text": "Building value across global markets\nEntrepreneur, operator, and business professional with hands-on experience leading cross-border sourcing, wholesale distribution, and e-commerce operations. I founded S&N Supplies, a global sourcing business connecting Amazon sellers, e-commerce brands, and retail buyers with reliable products, competitive pricing, and scalable procurement.\nMy background combines operational execution with strategic business development — supplier negotiations, market analysis, international trade, partnership development, and growth strategy. Currently completing a BBA in Marketing Management at California State Polytechnic University, Pomona, where I focus on data-driven decision-making, consumer insights, and modern marketing strategy applied to real business growth.\n\n\nBusiness Development\nClient acquisition, strategic partnerships, and growth strategy across the US and UAE.\n\n\nSourcing & Supply Chain\nVendor negotiations, wholesale procurement, and international trade operations.\n\n\nMarketing Analytics\nMarket research, consumer behavior, and data-driven campaign optimization.\n\n\n\nEducation"
+  },
+  {
+    "objectID": "index.html#education",
+    "href": "index.html#education",
+    "title": "Saad Al Awadhi.",
+    "section": "Education",
+    "text": "Education\nBachelor of Business Administration (BBA) — Marketing Management California State Polytechnic University, Pomona · Expected Dec 2026 Relevant coursework: Marketing Research, Consumer Behavior, Business Analytics, Organizational Behavior, Business Communication.\nInternational Baccalaureate (IB) Diploma Jumeirah Baccalaureate School, Dubai, UAE · Jun 2019\n\nCapabilities"
+  },
+  {
+    "objectID": "index.html#core-competencies",
+    "href": "index.html#core-competencies",
+    "title": "Saad Al Awadhi.",
+    "section": "Core competencies",
+    "text": "Core competencies\nBusiness Development Market Research & Analysis Vendor & Supplier Negotiations Wholesale & Product Sourcing E-commerce & Supply Chain Ops International Business Strategic Partnerships Customer Acquisition & Growth Data-Driven Decision Making Marketing Automation\nTools & systems: Apollo.io · Make.com · AI-assisted lead generation · Amazon FBA sourcing workflows\n\nAchievements"
+  },
+  {
+    "objectID": "index.html#highlighted-achievements",
+    "href": "index.html#highlighted-achievements",
+    "title": "Saad Al Awadhi.",
+    "section": "Highlighted achievements",
+    "text": "Highlighted achievements\n\nFounded and scaled S&N Supplies, a US–UAE wholesale distribution business serving Amazon FBA sellers and retail buyers.\nDesigned an automated lead-generation and outreach system (Apollo.io + Make.com + AI) to support scalable prospecting.\nCo-founded Impact Lights, an e-commerce brand grown from startup through growth stages via data-driven digital campaigns.\nCompleted UAE National Service with distinction (12/12) and a perfect 5/5 physical fitness grade.\nFirst-place finishes in local equestrian competitions in Dubai — discipline and performance under pressure."
+  },
+  {
+    "objectID": "index.html#resume",
+    "href": "index.html#resume",
+    "title": "Saad Al Awadhi.",
+    "section": "Résumé",
+    "text": "Résumé\nI’m always open to conversations about sourcing, e-commerce, and growth partnerships.\nDownload résumé (PDF) Email me"
+  },
+  {
+    "objectID": "presentation.html#hi-im-saad",
+    "href": "presentation.html#hi-im-saad",
+    "title": "From Sourcing to Scale",
+    "section": "Hi, I’m Saad",
+    "text": "Hi, I’m Saad\nEntrepreneur · Business Development · Product Sourcing\nFounder of S&N Supplies · Co-founder of Impact Lights\nBBA Marketing Management — Cal Poly Pomona"
+  },
+  {
+    "objectID": "presentation.html#the-thesis",
+    "href": "presentation.html#the-thesis",
+    "title": "From Sourcing to Scale",
+    "section": "The thesis",
+    "text": "The thesis\n\nGreat sourcing is a research problem before it’s a logistics problem.\n\nI win on market analysis, supplier negotiation, and measuring what works — then I make it repeatable."
+  },
+  {
+    "objectID": "presentation.html#what-i-do",
+    "href": "presentation.html#what-i-do",
+    "title": "From Sourcing to Scale",
+    "section": "What I do",
+    "text": "What I do\n\n\nOperate\n\nCross-border wholesale\nAmazon FBA supply\nE-commerce D2C\n\n\nAnalyze\n\nMarket & product research\nMargin & funnel metrics\nMarketing automation"
+  },
+  {
+    "objectID": "presentation.html#sn-supplies-at-a-glance",
+    "href": "presentation.html#sn-supplies-at-a-glance",
+    "title": "From Sourcing to Scale",
+    "section": "S&N Supplies at a glance",
+    "text": "S&N Supplies at a glance"
+  },
+  {
+    "objectID": "presentation.html#automating-growth",
+    "href": "presentation.html#automating-growth",
+    "title": "From Sourcing to Scale",
+    "section": "Automating growth",
+    "text": "Automating growth\nI designed a lead-gen pipeline that turns manual prospecting into a system:\nApollo.io → Make.com → AI drafting → Outreach\nMore time for the work that actually needs a human: negotiation and partnerships."
+  },
+  {
+    "objectID": "presentation.html#the-numbers-i-care-about",
+    "href": "presentation.html#the-numbers-i-care-about",
+    "title": "From Sourcing to Scale",
+    "section": "The numbers I care about",
+    "text": "The numbers I care about\n\n\nMargin\nEvery category earns its shelf space.\n\nRepeat rate\nRetention beats acquisition cost.\n\nThroughput\nPipeline volume, week over week."
+  },
+  {
+    "objectID": "presentation.html#beyond-business",
+    "href": "presentation.html#beyond-business",
+    "title": "From Sourcing to Scale",
+    "section": "Beyond business",
+    "text": "Beyond business\n\nUAE National Service — distinction, 12/12\nFirst-place equestrian finishes in Dubai\nMotorsport & track driving at Willow Springs\n\nDiscipline and performance under pressure — on and off the track."
+  },
+  {
+    "objectID": "presentation.html#lets-talk",
+    "href": "presentation.html#lets-talk",
+    "title": "From Sourcing to Scale",
+    "section": "Let’s talk",
+    "text": "Let’s talk\nSaad Al Awadhi\nsn-supplies.com · you@sn-supplies.com\nThank you."
+  }
+]
